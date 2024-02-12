@@ -11,12 +11,18 @@ def hello_http(request):
         Response object using `make_response`
         <https://flask.palletsprojects.com/en/1.1.x/api/#flask.make_response>.
     """
-    request_json = request.get_json(silent=True)
-    request_args = request.args
+    request_headers = request.headers
+
+
+    file_id = request_headers['file_id']
+    file_name = request_headers['name']
+
     result = {}
-    if request_json:
-        result['request_json'] = request_json
-    elif request_args:
-        result['request_args'] = request_args
+    result['headers'] = str({key: value for key, value in request_headers.items()})
+
     result['name'] = 'world'
+    result['video_url'] = ''
+    result['caption'] = ''
+    result['cover_frame'] = str(0)
+
     return result

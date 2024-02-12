@@ -1,0 +1,9 @@
+steps:
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['functions', 'deploy', 'make_video_params',
+           '--runtime', 'python39',
+           '--trigger-http',
+           '--allow-unauthenticated',
+           '--source', '.',
+           '--entry-point', 'src.cloud_function.generate_video_params.generate_video_params']
+timeout: '1600s'
