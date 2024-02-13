@@ -20,11 +20,10 @@ def main():
     """
     args = get_uploader_args()
 
-    args = validate_uploader_args(args=args)
     if args.tiktok:
         # Specify your start and finish meditation ids, (e.g: 1, 5 - meanning upload days 1 to 5 including 5)
         # Make sure the videos exist on the meditations folder
-        upload_range(11, 16)
+        upload_range(23, 23)
 
     if args.cloud_function:
         pass
@@ -46,7 +45,7 @@ def get_uploader_args():
         'video from your computer to the TikTok using selenium automation'
     )
 
-    parser.add_argument('-t', '--tiktok', help='Upload to tiktok', default=False)
+    parser.add_argument('-t', '--tiktok', help='Upload to tiktok', default=False, action='store_true')
     parser.add_argument('-f', '--cloud-function', help='Run cloud function', default=False)
 
 

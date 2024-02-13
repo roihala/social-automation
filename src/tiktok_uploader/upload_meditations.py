@@ -14,6 +14,8 @@ from src.tiktok_uploader.upload import upload_video
 from src.tiktok_uploader.get_latest_cookies import get_latest_local_cookies
 import arrow
 
+from tiktok_uploader.utils import green
+
 PROJECT_START_DATE = arrow.get(datetime.datetime(2024, 1, 26, tzinfo=None))
 MEDITATIONS_DIR = r"C:\Users\RoiHa\OneDrive\Documents\Adobe\Premiere Pro\23.0\export\מדיטציות"
 
@@ -24,6 +26,7 @@ def upload_range(start_id, finish_id):
     # Starting video id, finish video id
     for v_id in range(start_id, finish_id + 1):
         date = PROJECT_START_DATE.shift(days=v_id)
+        logger.debug(green(f"Uploading day {v_id} at {date}"))
         try:
             filepath = os.path.join(MEDITATIONS_DIR, mapped_videos[v_id])
         except KeyError as e:
