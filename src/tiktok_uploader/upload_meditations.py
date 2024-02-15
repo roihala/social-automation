@@ -1,13 +1,9 @@
-import datetime
 import os
 import re
 from collections import defaultdict
 
-# Now you can import modules from the added directory as if they were installed packages
-
-
-import arrow
-
+import datetime
+import os
 from src.tiktok_uploader import logger
 from src.tiktok_uploader.upload import upload_video
 
@@ -69,16 +65,4 @@ def map_meditation_videos(directory_path):
     latest_files = {seq: max(file, key=lambda x: x[0])[1] for seq, file in sorted(files_dict.items())}
 
     return latest_files
-
-
-
-
-
-
-
-
-
-
-
-
 

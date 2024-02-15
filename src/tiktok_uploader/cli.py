@@ -7,6 +7,7 @@ from os.path import exists, join
 import datetime
 import json
 
+from order_exported_posts.order_exported_posts import order_posts
 from src.tiktok_uploader.upload import upload_video
 from src.tiktok_uploader.auth import login_accounts, save_cookies
 from src.tiktok_uploader.upload_meditations import upload_range
@@ -27,6 +28,10 @@ def main():
 
     if args.cloud_function:
         pass
+
+    if args.order:
+        order_posts([18, 33, 32, 31, 28, 24, 25, 29, 11, 8, 39, 43])
+
     # parse args
     # schedule = parse_schedule(args.schedule)
     # proxy = parse_proxy(args.proxy)
@@ -46,7 +51,8 @@ def get_uploader_args():
     )
 
     parser.add_argument('-t', '--tiktok', help='Upload to tiktok', default=False, action='store_true')
-    parser.add_argument('-f', '--cloud-function', help='Run cloud function', default=False)
+    parser.add_argument('-f', '--cloud_function', help='Run cloud function', default=False, action='store_true')
+    parser.add_argument('-o', '--order', help='order post videos for ig reels', default=False, action='store_true')
 
 
     # These args stay because they should be examined (username & password mainly)
